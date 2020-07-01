@@ -1,12 +1,12 @@
 package com.example.sportsleague.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@JsonIgnoreProperties("players")
 @Entity
 public class Club {
 
@@ -15,7 +15,8 @@ public class Club {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "club")
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "club")
     private List<Player> players;
 
     public Club(String name) {
