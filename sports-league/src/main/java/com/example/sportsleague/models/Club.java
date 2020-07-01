@@ -14,6 +14,12 @@ public class Club {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private int wins;
+    private int draws;
+    private int losses;
+    private int goalsFor;
+    private int goalsAgainst;
+    private int goalDifference;
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "club")
@@ -49,6 +55,54 @@ public class Club {
 
     public void setPlayers(List<Player> players) {
         this.players = players;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public void setWins(int wins) {
+        this.wins = wins;
+    }
+
+    public int getDraws() {
+        return draws;
+    }
+
+    public void setDraws(int draws) {
+        this.draws = draws;
+    }
+
+    public int getLosses() {
+        return losses;
+    }
+
+    public void setLosses(int losses) {
+        this.losses = losses;
+    }
+
+    public int getGoalsFor() {
+        return goalsFor;
+    }
+
+    public void setGoalsFor(int goalsFor) {
+        this.goalsFor = goalsFor;
+    }
+
+    public int getGoalsAgainst() {
+        return goalsAgainst;
+    }
+
+    public void setGoalsAgainst(int goalsAgainst) {
+        this.goalsAgainst = goalsAgainst;
+    }
+
+    public int getGoalDifference() {
+        return goalDifference;
+    }
+
+    public void setGoalDifference(int goalDifference) {
+        this.goalDifference = goalDifference;
     }
 
     public void addPlayer(Player player) {
