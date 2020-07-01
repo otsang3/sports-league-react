@@ -28,5 +28,6 @@ public class DataLoader implements ApplicationRunner {
 
         clubRepository.save(barcelonaFC);
         playerRepository.save(messi);
+        barcelonaFC.addPlayer(messi);
     }
 }
