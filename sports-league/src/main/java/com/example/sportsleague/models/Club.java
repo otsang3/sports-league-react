@@ -1,23 +1,22 @@
 package com.example.sportsleague.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class Player {
+public class Club {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "club_id")
-    private Club club;
+    @OneToMany(mappedBy = "club")
+    private List<Player> players;
 
-    public Player(String name, Club club) {
+    public Club(String name) {
         this.name = name;
-        this.club = club;
+        this.players = new ArrayList<>();
     }
-
-    
 }
