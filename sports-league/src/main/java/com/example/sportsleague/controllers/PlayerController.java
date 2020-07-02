@@ -27,7 +27,7 @@ public class PlayerController {
     }
 
     @PostMapping()
-    public ResponseEntity<Player> postNewPlayer(@RequestBody Player player) {
+    public ResponseEntity<Player> postPlayer(@RequestBody Player player) {
         playerRepository.save(player);
         return new ResponseEntity<>(player, HttpStatus.CREATED);
     }
