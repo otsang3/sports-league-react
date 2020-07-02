@@ -1,5 +1,6 @@
 import React from 'react';
 import Table from '../components/Table.js'
+import Request from '../helpers/Request.js'
 
 class TableContainer extends React.Component {
 
@@ -11,8 +12,10 @@ class TableContainer extends React.Component {
   }
 
   componentDidMount() {
-    fetch("/clubs")
-    .then(response => response.json())
+
+    const request = new Request;
+
+    request.get("/clubs")
     .then(data => this.setState({
       clubs: data
     }))
