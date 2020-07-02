@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+div ul li:hover{
+  text-shadow: 0 0 1px white;
+}
+
 .navBar {
   background-color: grey;
   height: 45px;

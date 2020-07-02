@@ -23,11 +23,20 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args) {
 
-        Club barcelonaFC = new Club("Barcelona FC");
-        Player messi = new Player("Lionel Messi", barcelonaFC);
+        Club manUtd = new Club("Manchester United");
+        Club manCity = new Club("Manchester City");
+        Club liverpool = new Club("Liverpool");
+        Club tottenhamSpurs = new Club("Tottenham Spurs");
+        Club chelsea = new Club("Chelsea");
+        Club leicesterCity = new Club("Leicester City");
 
-        clubRepository.save(barcelonaFC);
-        playerRepository.save(messi);
-        barcelonaFC.addPlayer(messi);
+        clubRepository.save(manUtd);
+        clubRepository.save(manCity);
+        clubRepository.save(liverpool);
+        clubRepository.save(tottenhamSpurs);
+        clubRepository.save(chelsea);
+        clubRepository.save(leicesterCity);
+
+
     }
 }
