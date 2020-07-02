@@ -16,9 +16,26 @@ div ul li:hover{
   text-shadow: 0 0 1px white;
 }
 
+table {
+  margin-left: 300px;
+  font-size: 14px;
+  border-collapse: collapse;
+}
+
 .navBar {
   background-color: grey;
   height: 45px;
+}
+
+.navBarInitialListItem {
+  margin-left: 240px;
+  margin-top: 11px;
+  margin-right: 100px;
+}
+
+.navBarLink {
+  text-decoration: none;
+  color: white;
 }
 
 .navBarList {
@@ -27,18 +44,30 @@ div ul li:hover{
   margin: 0;
 }
 
-.navBarLink {
-  text-decoration: none;
-  color: white;
-}
-
 .navBarListItem {
   margin-top: 11px;
   margin-right: 100px;
 }
 
-.navBarInitialListItem {
-  margin-left: 225px;
-  margin-top: 11px;
-  margin-right: 100px;
+.table-content th {
+  font-weight: 400;
+  font-size:14px;
+  width: 50px;
+  height: 50px;
+  border-bottom: solid 1px #D3D3D3;
+}
+
+.table-content-last-child th {
+  font-weight: 400;
+  font-size:14px;
+  width: 50px;
+  height: 50px;
+}
+
+.table-headers {
+  height: 80px;
+}
+
+.th-wide {
+  width: 125px;
 }

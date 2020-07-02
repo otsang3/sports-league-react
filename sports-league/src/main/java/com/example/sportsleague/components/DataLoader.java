@@ -26,14 +26,20 @@ public class DataLoader implements ApplicationRunner {
         Club manUtd = new Club("Manchester United");
         Club manCity = new Club("Manchester City");
         Club liverpool = new Club("Liverpool");
-        Club tottenhamSpurs = new Club("Tottenham Spurs");
+        Club spurs = new Club("Tottenham Spurs");
         Club chelsea = new Club("Chelsea");
         Club leicesterCity = new Club("Leicester City");
+
+        manUtd.setPoints(12);
+        manCity.setPoints(11);
+        liverpool.setPoints(10);
+        spurs.setPoints(7);
+        leicesterCity.setPoints(7);
 
         clubRepository.save(manUtd);
         clubRepository.save(manCity);
         clubRepository.save(liverpool);
-        clubRepository.save(tottenhamSpurs);
+        clubRepository.save(spurs);
         clubRepository.save(chelsea);
         clubRepository.save(leicesterCity);
 

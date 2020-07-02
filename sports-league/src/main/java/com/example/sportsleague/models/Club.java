@@ -14,6 +14,8 @@ public class Club {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private int matchesPlayed;
+    private int points;
     private int wins;
     private int draws;
     private int losses;
@@ -103,6 +105,22 @@ public class Club {
 
     public void setGoalDifference(int goalDifference) {
         this.goalDifference = goalDifference;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public int getMatchesPlayed() {
+        return matchesPlayed;
+    }
+
+    public void setMatchesPlayed(int matchesPlayed) {
+        this.matchesPlayed = matchesPlayed;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 
     public void addPlayer(Player player) {
