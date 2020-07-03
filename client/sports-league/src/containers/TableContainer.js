@@ -13,7 +13,7 @@ class TableContainer extends React.Component {
 
   componentDidMount() {
 
-    const request = new Request;
+    const request = new Request();
 
     const largestToSmallest = function (a,b) {
       if (a.points === b.points) {

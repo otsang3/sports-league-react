@@ -61,8 +61,11 @@ public class DataLoader implements ApplicationRunner {
         clubRepository.save(leicesterCity);
 
         Match match1 = new Match(manUtd, manCity, LocalDateTime.parse("2018-12-30T19:34:50.63"));
+        Match match2 = new Match(manCity, manUtd, LocalDateTime.parse("2018-12-30T19:34:50.63"));
+
 
         matchRepository.save(match1);
+        matchRepository.save(match2);
 
 
     }
