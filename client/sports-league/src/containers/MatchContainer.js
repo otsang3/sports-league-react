@@ -32,8 +32,13 @@ class MatchContainer extends React.Component {
             matches: groups[date]
           }
         })
+        
         this.setState({
-          matchData: groupArrays
+          matchData: groupArrays.sort(function(a, b) {
+            if (a.date > b.date) return 1;
+            if (a.date < b.date) return -1;
+            return 0
+          })
       })
     })
   }
