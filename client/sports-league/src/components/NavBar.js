@@ -18,11 +18,11 @@ function NavBar() {
         <Link className="navBarLink" to="/results">
           <li className="navBarListItem">Results</li>
         </Link>
-        <Link className="navBarLink" to="/teams">
-          <li className="navBarListItem">Teams</li>
+        <Link className="navBarLink" to="/stats">
+          <li className="navBarListItem">Stats</li>
         </Link>
-        <Link className="navBarLink" to="/players">
-          <li className="navBarListItem">Players</li>
+        <Link className="navBarLink" to="/admin">
+          <li className="navBarListItem">Admin</li>
         </Link>
       </ul>
     </div>
