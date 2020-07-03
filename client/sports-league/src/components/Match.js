@@ -3,10 +3,20 @@ import React from 'react';
 function Match(props) {
 
   const matchComponent = props.match.matches.map((match, index) => {
+
+    const getTime = match.date.split('T')[1].substring(0,5)
+
     return (
-      <div key={index}>
-        <p>{match.homeClub.name} vs {match.awayClub.name}</p>
-      </div>
+      <table key={index} className="fixtures-table-content">
+        <tbody>
+          <tr key={index}>
+            <th>{getTime}</th>
+            <th className="fixtures-table-item">{match.homeClub.name}</th>
+            <th style={{paddingLeft: 40}}>vs</th>
+            <th className="fixtures-table-item">{match.awayClub.name}</th>
+          </tr>
+        </tbody>
+      </table>
     )
   })
 

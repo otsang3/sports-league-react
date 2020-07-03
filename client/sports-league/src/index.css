@@ -24,6 +24,27 @@ table {
   margin-top: 10px;
 }
 
+.fixtures-table {
+  margin-left: 400px;
+  font-size: 14px;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.fixtures-table tbody tr th {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.fixtures-table-content {
+  margin-left: 35px;
+}
+
+.fixtures-table-item {
+  width: 200px;
+  padding-left: 40px;
+}
+
 .navBar {
   background-color: #663399;
   height: 45px;

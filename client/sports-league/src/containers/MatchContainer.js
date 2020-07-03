@@ -32,7 +32,7 @@ class MatchContainer extends React.Component {
             matches: groups[date]
           }
         })
-        
+
         this.setState({
           matchData: groupArrays.sort(function(a, b) {
             if (a.date > b.date) return 1;
@@ -52,7 +52,7 @@ class MatchContainer extends React.Component {
     })
 
     return(
-      <div>
+      <div className="fixtures-table">
         {matchComponent}
       </div>
 
