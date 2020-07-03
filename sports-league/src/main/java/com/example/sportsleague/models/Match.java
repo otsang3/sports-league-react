@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+
 @Entity
 public class Match {
 
@@ -12,9 +13,31 @@ public class Match {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnoreProperties(value = {
+            "matchesPlayed",
+            "points",
+            "wins",
+            "draws",
+            "losses",
+            "goalsFor",
+            "goalsAgainst",
+            "goalDifference"
+
+    })
     @OneToOne
     private Club homeClub;
 
+    @JsonIgnoreProperties(value = {
+            "matchesPlayed",
+            "points",
+            "wins",
+            "draws",
+            "losses",
+            "goalsFor",
+            "goalsAgainst",
+            "goalDifference"
+
+    })
     @OneToOne
     private Club awayClub;
     private LocalDateTime date;
