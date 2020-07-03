@@ -1,13 +1,16 @@
 package com.example.sportsleague.components;
 
 import com.example.sportsleague.models.Club;
+import com.example.sportsleague.models.Match;
 import com.example.sportsleague.models.Player;
 import com.example.sportsleague.repositories.ClubRepository;
+import com.example.sportsleague.repositories.MatchRepository;
 import com.example.sportsleague.repositories.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
+import java.time.LocalDateTime;
 
 @Component
 public class DataLoader implements ApplicationRunner {
@@ -17,6 +20,9 @@ public class DataLoader implements ApplicationRunner {
 
     @Autowired
     PlayerRepository playerRepository;
+
+    @Autowired
+    MatchRepository matchRepository;
 
     public DataLoader() {
     }
@@ -53,6 +59,10 @@ public class DataLoader implements ApplicationRunner {
         clubRepository.save(spurs);
         clubRepository.save(chelsea);
         clubRepository.save(leicesterCity);
+
+        Match match1 = new Match(manUtd, manCity, LocalDateTime.parse("2018-12-30T19:34:50.63"));
+
+        matchRepository.save(match1);
 
 
     }
