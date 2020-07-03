@@ -126,4 +126,16 @@ public class Club {
     public void addPlayer(Player player) {
         this.players.add(player);
     }
+
+    public void calculatePts() {
+        this.points = (this.wins * 3) + (this.draws);
+    }
+
+    public void calculateGoalDiff() {
+        this.goalDifference = this.goalsFor - this.goalsAgainst;
+    }
+
+    public void calculateMatchesPlayed() {
+        this.matchesPlayed = this.wins + this.draws + this.losses;
+    }
 }

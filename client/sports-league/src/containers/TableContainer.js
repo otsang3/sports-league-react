@@ -15,16 +15,17 @@ class TableContainer extends React.Component {
 
     const request = new Request;
 
+    const largestToSmallest = function (a,b) {
+      if (a.points === b.points) {
+          return b.goalDifference - a.goalDifference
+      }
+      return b.points - a.points
+    }
+
     request.get("/clubs")
     .then(data => {
-      function compare(a, b) {
-        if (a.points > b.points) return -1;
-        if (b.points > a.points) return 1;
-
-        return 0;
-      }
       this.setState({
-        clubs: data.sort(compare)
+        clubs: data.sort(largestToSmallest)
       })
     })
   }
@@ -39,19 +40,21 @@ class TableContainer extends React.Component {
 
     return(
       <table>
-        <tr className="table-headers">
-          <th>Position</th>
-          <th className="th-wide">Club</th>
-          <th>Matches Played</th>
-          <th>Wins</th>
-          <th>Draws</th>
-          <th>Losses</th>
-          <th>Goals For</th>
-          <th>Goals Against</th>
-          <th>Goal Difference</th>
-          <th>Points</th>
-        </tr>
+        <tbody>
+          <tr className="table-headers">
+            <th>Position</th>
+            <th className="th-wide">Club</th>
+            <th>Points</th>
+            <th>Matches Played</th>
+            <th>Wins</th>
+            <th>Draws</th>
+            <th>Losses</th>
+            <th>Goals For</th>
+            <th>Goals Against</th>
+            <th>Goal Difference</th>
+          </tr>
             {clubComponent}
+        </tbody>
       </table>
 
     )

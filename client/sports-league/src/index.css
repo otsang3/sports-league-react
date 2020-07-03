@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #F0F0F0;
 }
 
 code {
@@ -23,7 +24,7 @@ table {
 }
 
 .navBar {
-  background-color: grey;
+  background-color: #663399;
   height: 45px;
 }
 

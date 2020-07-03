@@ -30,11 +30,22 @@ public class DataLoader implements ApplicationRunner {
         Club chelsea = new Club("Chelsea");
         Club leicesterCity = new Club("Leicester City");
 
-        manUtd.setPoints(12);
-        manCity.setPoints(11);
-        liverpool.setPoints(10);
-        spurs.setPoints(7);
-        leicesterCity.setPoints(7);
+        manUtd.setWins(5);
+        manUtd.setDraws(2);
+        manUtd.setGoalsFor(12);
+        manUtd.setGoalsAgainst(2);
+        manUtd.calculateGoalDiff();
+        manUtd.calculatePts();
+        manUtd.calculateMatchesPlayed();
+
+        manCity.setWins(0);
+        manCity.setDraws(5);
+        manCity.setLosses(7);
+        manCity.setGoalsFor(5);
+        manCity.setGoalsAgainst(20);
+        manCity.calculatePts();
+        manCity.calculateMatchesPlayed();
+        manCity.calculateGoalDiff();
 
         clubRepository.save(manUtd);
         clubRepository.save(manCity);
