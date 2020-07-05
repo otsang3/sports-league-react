@@ -2,7 +2,7 @@ import React from 'react';
 import Match from '../components/Match.js'
 import MatchData from '../helpers/MatchData.js'
 
-class MatchContainer extends React.Component {
+class FixtureContainer extends React.Component {
 
   constructor(props) {
     super(props);
@@ -39,4 +39,4 @@ class MatchContainer extends React.Component {
   }
 }
 
-export default MatchContainer;
+export default FixtureContainer;
