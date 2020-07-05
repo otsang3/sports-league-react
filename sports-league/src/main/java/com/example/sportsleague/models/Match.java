@@ -41,6 +41,7 @@ public class Match {
     @OneToOne
     private Club awayClub;
     private LocalDateTime date;
+    private Long result;
 
     public Match(Club homeClub, Club awayClub, LocalDateTime date) {
         this.homeClub = homeClub;
@@ -81,5 +82,13 @@ public class Match {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public Long getResult() {
+        return result;
+    }
+
+    public void setResult(Long result) {
+        this.result = result;
     }
 }

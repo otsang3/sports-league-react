@@ -1,6 +1,6 @@
 import React from 'react';
-import Request from '../helpers/Request.js';
 import Match from '../components/Match.js'
+import MatchData from '../helpers/MatchData.js'
 
 class MatchContainer extends React.Component {
 
@@ -12,35 +12,46 @@ class MatchContainer extends React.Component {
   }
 
   componentDidMount() {
-    const request = new Request();
 
-    request.get("/matches")
-    .then(data => {
-      const groups = data.reduce((groups, match) => {
+    const dataRequest = new MatchData();
 
-        const date = match.date.split('T')[0];
-          if (!groups[date]) {
-            groups[date] = [];
-          }
-            groups[date].push(match);
-            return groups
-          }, {});
+    dataRequest.getFixtures()
+    .then(fetchData => this.setState({
+      matchData: fetchData
+    }))
 
-        const groupArrays = Object.keys(groups).map((date) => {
-          return {
-            date,
-            matches: groups[date]
-          }
-        })
 
-        this.setState({
-          matchData: groupArrays.sort(function(a, b) {
-            if (a.date > b.date) return 1;
-            if (a.date < b.date) return -1;
-            return 0
-          })
-      })
-    })
+
+
+    // const request = new Request();
+    //
+    // request.get("/matches")
+    // .then(data => {
+    //   const groups = data.reduce((groups, match) => {
+    //
+    //     const date = match.date.split('T')[0];
+    //       if (!groups[date]) {
+    //         groups[date] = [];
+    //       }
+    //         groups[date].push(match);
+    //         return groups
+    //       }, {});
+    //
+    //     const groupArrays = Object.keys(groups).map((date) => {
+    //       return {
+    //         date,
+    //         matches: groups[date]
+    //       }
+    //     })
+    //
+    //     this.setState({
+    //       matchData: groupArrays.sort(function(a, b) {
+    //         if (a.date > b.date) return 1;
+    //         if (a.date < b.date) return -1;
+    //         return 0
+    //       })
+    //   })
+    // })
   }
 
   render() {
