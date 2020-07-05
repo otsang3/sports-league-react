@@ -12,7 +12,12 @@ function Match(props) {
           <tr key={index}>
             <th>{getTime}</th>
             <th className="fixtures-table-item">{match.homeClub.name}</th>
-            <th style={{paddingLeft: 40}}>vs</th>
+            {!match.result &&
+              <th style={{paddingLeft: 40}}>vs</th>
+            }
+            {match.result &&
+              <th style={{paddingLeft: 40}}>5:0</th>
+            }
             <th className="fixtures-table-item">{match.awayClub.name}</th>
           </tr>
         </tbody>

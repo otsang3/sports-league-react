@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import NavBar from './components/NavBar.js';
 import TableContainer from './containers/TableContainer.js';
 import FixtureContainer from './containers/FixtureContainer.js';
+import ResultContainer from './containers/ResultContainer.js';
 import HomePage from './components/HomePage.js';
 import './App.css';
 
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" exact component={HomePage}/>
           <Route path="/table" exact component={TableContainer}/>
           <Route path="/fixtures" exact component={FixtureContainer}/>
+          <Route path="/results" exact component={ResultContainer}/>
         </Switch>
     </Router>
 
