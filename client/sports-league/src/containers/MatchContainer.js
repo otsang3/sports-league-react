@@ -20,38 +20,6 @@ class MatchContainer extends React.Component {
       matchData: fetchData
     }))
 
-
-
-
-    // const request = new Request();
-    //
-    // request.get("/matches")
-    // .then(data => {
-    //   const groups = data.reduce((groups, match) => {
-    //
-    //     const date = match.date.split('T')[0];
-    //       if (!groups[date]) {
-    //         groups[date] = [];
-    //       }
-    //         groups[date].push(match);
-    //         return groups
-    //       }, {});
-    //
-    //     const groupArrays = Object.keys(groups).map((date) => {
-    //       return {
-    //         date,
-    //         matches: groups[date]
-    //       }
-    //     })
-    //
-    //     this.setState({
-    //       matchData: groupArrays.sort(function(a, b) {
-    //         if (a.date > b.date) return 1;
-    //         if (a.date < b.date) return -1;
-    //         return 0
-    //       })
-    //   })
-    // })
   }
 
   render() {

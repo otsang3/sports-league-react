@@ -38,37 +38,7 @@ class MatchData {
 
     })
   }
-    // .then(data => {
-    //
-    //   const groups = data.reduce((groups, match) => {
-    //     const date = match.date.split('T')[0];
-    //       if (!groups[date]) {
-    //         groups[date] = [];
-    //       }
-    //         groups[date].push(match);
-    //         return groups
-    //       }, {});
-    //
-    //     const groupArrays = Object.keys(groups).map((date) => {
-    //       return {
-    //         date,
-    //         matches: groups[date]
-    //       }
-    //     })
-    //
-    //     return matchData =
-    //     {
-    //       matchData: groupArrays.sort(function(a, b) {
-    //         if (a.date > b.date) return 1;
-    //         if (a.date < b.date) return -1;
-    //         return 0
-    //       })
-    //   }
-    // })
-    //
-    // return {
-    //   matchData
-    // }
+
   }
 
 
