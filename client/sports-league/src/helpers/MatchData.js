@@ -35,6 +35,7 @@ class MatchData {
     return this.fetchData()
     .then(data =>  {
       const fixturesWithNoResult = data.filter(data => data.result === null)
+      this.sortByTime(fixturesWithNoResult)
       const arrangeFixtures = this.formatFixtures(fixturesWithNoResult)
       const fixturesArray = this.objToArray(arrangeFixtures)
 
@@ -52,6 +53,7 @@ class MatchData {
     return this.fetchData()
     .then(data => {
       const fixturesWithResult = data.filter(data => data.result !== null);
+      this.sortByTime(fixturesWithResult)
       const arrangeFixtures = this.formatFixtures(fixturesWithResult);
       const fixturesArray = this.objToArray(arrangeFixtures)
 
@@ -61,6 +63,20 @@ class MatchData {
         return 0;
       })
 
+    })
+  }
+
+  sortByTime(fixturesArray) {
+    fixturesArray.sort(function(a, b) {
+      const firstTime = a.date.split('T')[1].split(':').join('')
+      const secondTime = b.date.split('T')[1].split(':').join('')
+      if (firstTime > secondTime) {
+        return 1;
+      } else if (firstTime < secondTime) {
+        return -1;
+      } else {
+        return 0
+      }
     })
   }
 

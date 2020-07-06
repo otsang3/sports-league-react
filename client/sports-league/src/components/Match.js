@@ -16,7 +16,7 @@ function Match(props) {
               <th style={{paddingLeft: 40}}>vs</th>
             }
             {match.result &&
-              <th style={{paddingLeft: 40}}>5:0</th>
+              <th style={{paddingLeft: 40}}>{match.homeScore}:{match.awayScore}</th>
             }
             <th className="fixtures-table-item">{match.awayClub.name}</th>
           </tr>
