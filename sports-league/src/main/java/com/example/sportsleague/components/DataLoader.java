@@ -2,10 +2,8 @@ package com.example.sportsleague.components;
 
 import com.example.sportsleague.models.Club;
 import com.example.sportsleague.models.Match;
-import com.example.sportsleague.models.Player;
 import com.example.sportsleague.repositories.ClubRepository;
 import com.example.sportsleague.repositories.MatchRepository;
-import com.example.sportsleague.repositories.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -105,6 +103,8 @@ public class DataLoader implements ApplicationRunner {
         matchRepository.save(match2);
         matchRepository.save(match4);
 
+        clubRepository.save(manUtd);
+        clubRepository.save(manCity);
 
 
     }
