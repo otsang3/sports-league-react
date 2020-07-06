@@ -19,9 +19,6 @@ public class DataLoader implements ApplicationRunner {
     ClubRepository clubRepository;
 
     @Autowired
-    PlayerRepository playerRepository;
-
-    @Autowired
     MatchRepository matchRepository;
 
     public DataLoader() {

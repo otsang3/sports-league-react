@@ -115,10 +115,18 @@ public class Match {
         this.setAwayScore(awayScore);
         if (homeScore > awayScore) {
             this.setResult(this.getHomeClub().getId());
+            this.homeClub.win();
+            this.awayClub.lose();
         } else if (homeScore < awayScore) {
             this.setResult(this.getAwayClub().getId());
+            this.homeClub.lose();
+            this.awayClub.win();
         } else {
             this.setResult(0L);
+            this.homeClub.draw();
+            this.awayClub.draw();
         }
+        this.homeClub.addGoals(homeScore);
+        this.awayClub.addGoals(awayScore);
     }
 }

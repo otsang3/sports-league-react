@@ -137,4 +137,23 @@ public class Club {
     public void calculateMatchesPlayed() {
         this.matchesPlayed = this.wins + this.draws + this.losses;
     }
+
+    public void win() {
+        this.wins += 1;
+        this.calculateMatchesPlayed();
+    }
+
+    public void draw() {
+        this.draws += 1;
+        this.calculateMatchesPlayed();
+    }
+
+    public void lose() {
+        this.losses += 1;
+        this.calculateMatchesPlayed();
+    }
+
+    public void addGoals(int goals) {
+        this.goalsFor += goals;
+    }
 }
