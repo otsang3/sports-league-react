@@ -42,6 +42,8 @@ public class Match {
     private Club awayClub;
     private LocalDateTime date;
     private Long result;
+    private int homeScore;
+    private int awayScore;
 
     public Match(Club homeClub, Club awayClub, LocalDateTime date) {
         this.homeClub = homeClub;
@@ -90,5 +92,33 @@ public class Match {
 
     public void setResult(Long result) {
         this.result = result;
+    }
+
+    public int getHomeScore() {
+        return homeScore;
+    }
+
+    public void setHomeScore(int homeScore) {
+        this.homeScore = homeScore;
+    }
+
+    public int getAwayScore() {
+        return awayScore;
+    }
+
+    public void setAwayScore(int awayScore) {
+        this.awayScore = awayScore;
+    }
+
+    public void createResult(int homeScore, int awayScore) {
+        this.setHomeScore(homeScore);
+        this.setAwayScore(awayScore);
+        if (homeScore > awayScore) {
+            this.setResult(this.getHomeClub().getId());
+        } else if (homeScore < awayScore) {
+            this.setResult(this.getAwayClub().getId());
+        } else {
+            this.setResult(0L);
+        }
     }
 }

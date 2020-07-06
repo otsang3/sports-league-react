@@ -101,7 +101,7 @@ public class DataLoader implements ApplicationRunner {
         Match match2 = new Match(spurs, chelsea, LocalDateTime.parse("2020-07-04T15:00:00.00"));
         Match match3 = new Match(leicesterCity, liverpool, LocalDateTime.parse("2020-07-05T17:45:00.00"));
 
-        match1.setResult(manUtd.getId());
+        match1.createResult(5,0);
         matchRepository.save(match3);
         matchRepository.save(match1);
         matchRepository.save(match2);
