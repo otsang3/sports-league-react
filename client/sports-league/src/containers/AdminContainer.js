@@ -10,7 +10,7 @@ class AdminContainer extends React.Component {
     this.state = {
       fixtureComponent: false,
       resultComponent: false,
-      teamComponent: true,
+      teamComponent: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }

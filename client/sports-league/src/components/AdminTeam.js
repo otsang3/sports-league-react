@@ -8,6 +8,7 @@ class AdminTeam extends React.Component {
     super(props);
     this.state = {
       editToggle: false,
+      createToggle: false,
       input: this.props.club.name
     }
     this.handleDelete = this.handleDelete.bind(this);
@@ -24,7 +25,7 @@ class AdminTeam extends React.Component {
   handleDelete(id) {
     const request = new Request();
     request.delete("/clubs/" + this.props.club.id)
-    window.location.reload();
+    .then(window.location.reload());
   }
 
   handleEdit() {
