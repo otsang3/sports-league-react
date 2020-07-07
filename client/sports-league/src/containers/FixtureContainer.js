@@ -1,30 +1,30 @@
 import React from 'react';
 import Match from '../components/Match.js'
-import MatchData from '../helpers/MatchData.js'
+import ApiDataRequest from '../helpers/ApiDataRequest.js'
 
 class FixtureContainer extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      matchData: []
+      ApiDataRequest: []
     }
   }
 
   componentDidMount() {
 
-    const dataRequest = new MatchData();
+    const dataRequest = new ApiDataRequest();
 
     dataRequest.getFixtures()
     .then(fetchData => this.setState({
-      matchData: fetchData
+      ApiDataRequest: fetchData
     }))
 
   }
 
   render() {
 
-    const matchComponent = this.state.matchData.map((match, index) => {
+    const matchComponent = this.state.ApiDataRequest.map((match, index) => {
       return (
         <Match match={match} key={index}/>
       )

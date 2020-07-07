@@ -1,6 +1,6 @@
 import Request from './Request.js'
 
-class MatchData {
+class ApiDataRequest {
 
   objToArray(obj) {
     return Object.keys(obj).map(date => {
@@ -11,9 +11,36 @@ class MatchData {
     })
   }
 
+  fetchClubData() {
+    const request = new Request();
+    return request.get("/clubs")
+  }
+
   fetchData() {
     const request = new Request();
     return request.get("/matches")
+  }
+
+  formatClubs(data) {
+    const arrangeClubs = data.sort(function(a, b) {
+
+      if (a.points === b.points) {
+        if (a.goalDifference > b.goalDifference) {
+          return -1
+        } else if (a.goalDifference < b.goalDifference) {
+          return 1
+        } else {
+          return 0
+        }
+      } else if (a.points > b.points) {
+        return -1
+      } else if (a.points < b.points) {
+        return 1
+      } else {
+        return 0
+      }
+    })
+    return arrangeClubs
   }
 
   formatFixtures(data) {
@@ -83,4 +110,4 @@ class MatchData {
 }
 
 
-export default MatchData;
+export default ApiDataRequest;

@@ -28,14 +28,12 @@ class AdminContainer extends React.Component {
     return(
       <div>
         <button name="fixtureComponent" onClick={this.handleClick}>Manage Fixtures</button>
+        <button name="resultComponent" onClick={this.handleClick}>Manage Results</button>
+        <button name="teamComponent" onClick={this.handleClick}>Manage Teams</button>    
         {this.state.fixtureComponent &&
         <AdminFixtureContainer/>}
-
-        <button name="resultComponent" onClick={this.handleClick}>Manage Results</button>
         {this.state.resultComponent &&
         <AdminResultContainer/>}
-        
-        <button name="teamComponent" onClick={this.handleClick}>Manage Teams</button>
         {this.state.teamComponent &&
         <AdminTeamContainer/>}
       </div>

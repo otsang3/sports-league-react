@@ -1,6 +1,6 @@
 import React from 'react';
 import Table from '../components/Table.js'
-import Request from '../helpers/Request.js'
+import ApiDataRequest from '../helpers/ApiDataRequest.js';
 
 class TableContainer extends React.Component {
 
@@ -13,21 +13,13 @@ class TableContainer extends React.Component {
 
   componentDidMount() {
 
-    const request = new Request();
+    const request = new ApiDataRequest();
 
-    const largestToSmallest = function (a,b) {
-      if (a.points === b.points) {
-          return b.goalDifference - a.goalDifference
-      }
-      return b.points - a.points
-    }
+    request.fetchClubData()
+    .then(data => this.setState({
+      clubs: request.formatClubs(data)
+    }))
 
-    request.get("/clubs")
-    .then(data => {
-      this.setState({
-        clubs: data.sort(largestToSmallest)
-      })
-    })
   }
 
   render() {
