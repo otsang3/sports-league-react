@@ -1,9 +1,16 @@
 import React from 'react';
+import Request from '../helpers/Request.js';
 
 class AdminFixture extends React.Component{
 
   constructor(props) {
-    super(props)
+    super(props);
+  }
+
+  handleDelete(id) {
+    const request = new Request();
+    request.delete("/matches/" + id)
+    .then(window.location.reload())
   }
 
   render() {
@@ -18,7 +25,7 @@ class AdminFixture extends React.Component{
               <th style={{paddingLeft: 40}}>vs</th>
               <th className="fixtures-table-item">{match.awayClub.name}</th>
               <td>
-                <button>Delete</button>
+                <button onClick={() => this.handleDelete(match.id)}>Delete</button>
                 <button>Edit</button>
                 <button>Create Result</button>
               </td>
