@@ -7,7 +7,7 @@ class FixtureContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ApiDataRequest: []
+      fixtures: []
     }
   }
 
@@ -17,14 +17,14 @@ class FixtureContainer extends React.Component {
 
     dataRequest.getFixtures()
     .then(fetchData => this.setState({
-      ApiDataRequest: fetchData
+      fixtures: fetchData
     }))
 
   }
 
   render() {
 
-    const matchComponent = this.state.ApiDataRequest.map((match, index) => {
+    const matchComponent = this.state.fixtures.map((match, index) => {
       return (
         <Match match={match} key={index}/>
       )

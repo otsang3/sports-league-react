@@ -7,7 +7,7 @@ class ResultContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ApiDataRequest: []
+      results: []
     }
   }
 
@@ -17,14 +17,14 @@ class ResultContainer extends React.Component {
 
     dataRequest.getResults()
     .then(fetchData => this.setState({
-      ApiDataRequest: fetchData
+      results: fetchData
     }))
 
   }
 
   render() {
 
-    const matchComponent = this.state.ApiDataRequest.map((match, index) => {
+    const matchComponent = this.state.results.map((match, index) => {
       return (
         <Match match={match} key={index}/>
       )

@@ -43,6 +43,19 @@ class ApiDataRequest {
     return arrangeClubs
   }
 
+  formatClubsByAlphabet(data) {
+    const arrangeClubs = data.sort(function(a, b) {
+      if (a.name.toUpperCase() > b.name.toUpperCase()) {
+        return 1;
+      } else if (a.name.toUpperCase() < b.name.toUpperCase()) {
+        return -1;
+      } else {
+        return 0;
+      }
+    })
+    return arrangeClubs
+  }
+
   formatFixtures(data) {
     const arrangeFixtures = data.reduce((dayFixtures, fixture) => {
       const fixtureDate = fixture.date.split('T')[0];
