@@ -8,18 +8,36 @@ class AdminContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      teamComponent: false,
       fixtureComponent: false,
-      resultComponent: false
+      resultComponent: false,
+      teamComponent: false,
     };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event) {
+    const name = event.target.name
+    this.setState((prevState) => ({
+      [name]: !prevState[name]
+    }))
+
+
   }
 
   render() {
     return(
       <div>
-        <AdminFixtureContainer/>
-        <AdminResultContainer/>
-        <AdminTeamContainer/>
+        <button name="fixtureComponent" onClick={this.handleClick}>Manage Fixtures</button>
+        {this.state.fixtureComponent &&
+        <AdminFixtureContainer/>}
+
+        <button name="resultComponent" onClick={this.handleClick}>Manage Results</button>
+        {this.state.resultComponent &&
+        <AdminResultContainer/>}
+        
+        <button name="teamComponent" onClick={this.handleClick}>Manage Teams</button>
+        {this.state.teamComponent &&
+        <AdminTeamContainer/>}
       </div>
     )
   }
