@@ -1,6 +1,8 @@
 package com.example.sportsleague.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -25,6 +27,7 @@ public class Match {
 
     })
     @OneToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Club homeClub;
 
     @JsonIgnoreProperties(value = {
@@ -39,6 +42,7 @@ public class Match {
 
     })
     @OneToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Club awayClub;
     private LocalDateTime date;
     private Long result;

@@ -30,6 +30,7 @@ public class DataLoader implements ApplicationRunner {
         Club spurs = new Club("Tottenham Spurs");
         Club chelsea = new Club("Chelsea");
         Club leicesterCity = new Club("Leicester City");
+        Club wolves = new Club("Wolves");
 
         manUtd.setWins(5);
         manUtd.setDraws(2);
@@ -91,6 +92,7 @@ public class DataLoader implements ApplicationRunner {
         clubRepository.save(spurs);
         clubRepository.save(chelsea);
         clubRepository.save(leicesterCity);
+        clubRepository.save(wolves);
 
         Match match1 = new Match(manUtd, manCity, LocalDateTime.parse("2020-07-04T12:45:00.00"));
         Match match2 = new Match(spurs, chelsea, LocalDateTime.parse("2020-07-04T15:00:00.00"));
