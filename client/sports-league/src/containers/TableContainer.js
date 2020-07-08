@@ -30,6 +30,12 @@ class TableContainer extends React.Component {
       )
     })
 
+    if (this.state.clubs.length === 0) {
+      return(
+        <p>Loading...</p>
+      )
+    }
+
     return(
       <table>
         <tbody>

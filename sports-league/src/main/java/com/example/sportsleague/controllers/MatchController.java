@@ -2,7 +2,6 @@ package com.example.sportsleague.controllers;
 
 import com.example.sportsleague.models.Match;
 import com.example.sportsleague.repositories.MatchRepository;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +31,7 @@ public class MatchController {
         return new ResponseEntity<>(matchRepository.save(match), HttpStatus.CREATED);
     }
 
-    @PutMapping
+    @PatchMapping
     public ResponseEntity updateMatch(@RequestBody Match match) {
         return new ResponseEntity<>(matchRepository.save(match), HttpStatus.OK);
     }
