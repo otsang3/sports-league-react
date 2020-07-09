@@ -16,6 +16,11 @@ class AdminContainer extends React.Component {
   }
 
   handleClick(event) {
+    this.setState({
+      fixtureComponent: false,
+      resultComponent: false,
+      teamComponent: false,
+    })
     const name = event.target.name
     this.setState((prevState) => ({
       [name]: !prevState[name]
@@ -24,9 +29,10 @@ class AdminContainer extends React.Component {
 
 
   render() {
+
     return(
       <div>
-        <button name="fixtureComponent" onClick={this.handleClick}>Manage Fixtures</button>
+        <button style={{marginLeft: 530, marginTop: 25}} name="fixtureComponent" onClick={this.handleClick}>Manage Fixtures</button>
         <button name="resultComponent" onClick={this.handleClick}>Manage Results</button>
         <button name="teamComponent" onClick={this.handleClick}>Manage Teams</button>
         {this.state.fixtureComponent &&

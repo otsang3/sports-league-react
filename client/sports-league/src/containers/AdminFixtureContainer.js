@@ -45,7 +45,7 @@ class AdminFixtureContainer extends React.Component {
     }
 
     return(
-      <div>
+      <div style={{paddingLeft: 300, paddingTop: 30}}>
         <button onClick={() => this.handleClick()}>{buttonDisplay}</button>
         {this.state.fixtureToggle &&
         <CreateFixture/>

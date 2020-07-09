@@ -106,23 +106,24 @@ class TeamSelect extends React.Component {
       return(
           <option key={club.id} value={club.name}>{club.name}</option>
       )
-
     })
+
+    const paddingStyle = {paddingLeft: 15, paddingRight: 15}
     return(
       <tr>
         <td>
         <select value={this.state.homeTeamName} onChange={this.handleHomeChange}>
           {teamComponent}
         </select>
-        <p>vs</p>
+        <label style={paddingStyle}>vs</label>
         <select value={this.state.awayTeamName} onChange={this.handleAwayChange}>
           {teamComponent}
         </select>
-        <label>Date: </label>
+        <label style={paddingStyle}>Date: </label>
         <input name="date" type="date" onChange={this.handleChange}/>
-        <label>Time: </label>
+        <label style={paddingStyle}>Time: </label>
         <input name="time" type="time" onChange={this.handleChange}/>
-        <button onClick={this.handleSave}>Save</button>
+        <button style={{marginLeft: 20}} onClick={this.handleSave}>Save</button>
         </td>
       </tr>
     )
