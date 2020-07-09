@@ -31,7 +31,9 @@ class TeamSelect extends React.Component {
     .then(() => {
       if (typeof this.props.match === 'object') {
         this.setState({
+          homeTeam: this.props.match.homeClub,
           homeTeamName: this.props.match.homeClub.name,
+          awayTeam: this.props.match.awayClub,
           awayTeamName: this.props.match.awayClub.name
         })} else {
         this.setState({
@@ -83,9 +85,10 @@ class TeamSelect extends React.Component {
         id: this.props.match.id,
         homeClub: this.state.homeTeam,
         awayClub: this.state.awayTeam,
-        date: this.props.match.date
+        date: this.state.date + "T" + this.state.time
       }
       request.patch("/matches", patchPayload)
+      console.log(patchPayload);
     } else {
       const postPayload = {
         homeClub: this.state.homeTeam,
