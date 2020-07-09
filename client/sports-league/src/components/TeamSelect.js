@@ -9,13 +9,16 @@ class TeamSelect extends React.Component {
     this.state = {
       clubs: [],
       homeTeam: '',
-      homeTeamName: this.props.match.homeClub.name,
+      homeTeamName: '',
       awayTeam: '',
-      awayTeamName: this.props.match.awayClub.name
+      awayTeamName: '',
+      date: '',
+      time: '',
     }
     this.handleHomeChange = this.handleHomeChange.bind(this);
     this.handleAwayChange = this.handleAwayChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -25,7 +28,20 @@ class TeamSelect extends React.Component {
     .then(data => this.setState({
       clubs: dataRequest.formatClubsByAlphabet(data)
     }))
-  }
+    .then(() => {
+      if (typeof this.props.match === 'object') {
+        this.setState({
+          homeTeamName: this.props.match.homeClub.name,
+          awayTeamName: this.props.match.awayClub.name
+        })} else {
+        this.setState({
+          homeTeamName: this.state.clubs[0].name,
+          awayTeamName: this.state.clubs[0].name
+        })
+        }
+      })
+    }
+
 
   handleAwayChange(event) {
     const teamName = event.target.value;
@@ -37,6 +53,12 @@ class TeamSelect extends React.Component {
     this.setState({
       awayTeamName: teamName,
       awayTeam: foundTeamRetain
+    })
+  }
+
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
     })
   }
 
@@ -56,13 +78,23 @@ class TeamSelect extends React.Component {
   handleSave(event) {
     event.preventDefault();
     const request = new Request();
-    const payload = {
-      id: this.props.match.id,
-      homeClub: this.state.homeTeam,
-      awayClub: this.state.awayTeam,
-      date: this.props.match.date
+    if (typeof this.props.match === 'object') {
+      const patchPayload = {
+        id: this.props.match.id,
+        homeClub: this.state.homeTeam,
+        awayClub: this.state.awayTeam,
+        date: this.props.match.date
+      }
+      request.patch("/matches", patchPayload)
+    } else {
+      const postPayload = {
+        homeClub: this.state.homeTeam,
+        awayClub: this.state.awayTeam,
+        date: this.state.date + "T" + this.state.time
+      }
+      request.post("/matches", postPayload)
     }
-    request.patch("/matches", payload)
+
   }
 
   render() {
@@ -83,6 +115,10 @@ class TeamSelect extends React.Component {
         <select value={this.state.awayTeamName} onChange={this.handleAwayChange}>
           {teamComponent}
         </select>
+        <label>Date: </label>
+        <input name="date" type="date" onChange={this.handleChange}/>
+        <label>Time: </label>
+        <input name="time" type="time" onChange={this.handleChange}/>
         <button onClick={this.handleSave}>Save</button>
         </td>
       </tr>
