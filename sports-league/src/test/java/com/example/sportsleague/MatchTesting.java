@@ -25,7 +25,7 @@ public class MatchTesting {
         Club manUtd = new Club("Manchester United");
         Club manCity = new Club("Manchester City");
         Match match1 = new Match(manUtd, manCity, LocalDateTime.parse("2020-07-04T12:45:00.00"));
-        match1.createResult(5,0);
+        Match.createResult(match1,5,0);
 
         assertEquals(1, manUtd.getWins());
         assertEquals(1, manCity.getLosses());

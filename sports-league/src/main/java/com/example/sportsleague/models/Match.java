@@ -114,23 +114,23 @@ public class Match {
         this.awayScore = awayScore;
     }
 
-    public void createResult(int homeScore, int awayScore) {
-        this.setHomeScore(homeScore);
-        this.setAwayScore(awayScore);
+    public static void createResult(Match match, int homeScore, int awayScore) {
+        match.setHomeScore(homeScore);
+        match.setAwayScore(awayScore);
         if (homeScore > awayScore) {
-            this.setResult(this.getHomeClub().getId());
-            this.homeClub.win();
-            this.awayClub.lose();
+            match.setResult(match.getHomeClub().getId());
+            match.homeClub.win();
+            match.awayClub.lose();
         } else if (homeScore < awayScore) {
-            this.setResult(this.getAwayClub().getId());
-            this.homeClub.lose();
-            this.awayClub.win();
+            match.setResult(match.getAwayClub().getId());
+            match.homeClub.lose();
+            match.awayClub.win();
         } else {
-            this.setResult(0L);
-            this.homeClub.draw();
-            this.awayClub.draw();
+            match.setResult(0L);
+            match.homeClub.draw();
+            match.awayClub.draw();
         }
-        this.homeClub.addGoals(homeScore);
-        this.awayClub.addGoals(awayScore);
+        match.homeClub.addGoals(homeScore);
+        match.awayClub.addGoals(awayScore);
     }
 }

@@ -31,6 +31,13 @@ public class MatchController {
         return new ResponseEntity<>(matchRepository.save(match), HttpStatus.CREATED);
     }
 
+    @PutMapping(value = "/createResult/{homeScore}/{awayScore}")
+    public ResponseEntity createResult
+            (@RequestBody Match match, @PathVariable("homeScore") int homeScore, @PathVariable("awayScore") int awayScore) {
+        Match.createResult(match, homeScore, awayScore);
+        return new ResponseEntity<>(matchRepository.save(match), HttpStatus.OK);
+    }
+
     @PatchMapping
     public ResponseEntity updateMatch(@RequestBody Match match) {
         return new ResponseEntity<>(matchRepository.save(match), HttpStatus.OK);
