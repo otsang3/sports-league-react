@@ -3,15 +3,6 @@ import AdminFixtureRender from './AdminFixtureRender';
 
 class AdminFixture extends React.Component{
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      editToggle: false
-    }
-  }
-
-
-
   render() {
 
     const fixtureComponent = this.props.fixture.matches.map(match => {

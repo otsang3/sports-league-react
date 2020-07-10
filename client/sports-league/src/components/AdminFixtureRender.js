@@ -1,4 +1,5 @@
 import React from 'react';
+import CreateResult from './CreateResult.js';
 import TeamSelect from './TeamSelect.js';
 import Request from '../helpers/Request.js';
 
@@ -7,8 +8,10 @@ class AdminFixtureRender extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editToggle: false
+      editToggle: false,
+      resultToggle: false
     }
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleDelete(id) {
@@ -17,10 +20,10 @@ class AdminFixtureRender extends React.Component {
     .then(window.location.reload())
   }
 
-  handleEdit() {
-    this.setState(prevState => ({
-      editToggle: !prevState.editToggle
-    }))
+  handleClick(event) {
+    this.setState({
+      [event.target.name]: !this.state[event.target.name]
+    })
   }
 
   render() {
@@ -51,13 +54,17 @@ class AdminFixtureRender extends React.Component {
             <th className="fixtures-table-item">{this.props.match.awayClub.name}</th>
             }
             <td>
-              <button onClick={() => this.handleEdit()}>{buttonDisplay}</button>
+              <button name="editToggle" onClick={this.handleClick}>{buttonDisplay}</button>
               <button onClick={() => this.handleDelete(this.props.match.id)}>Delete</button>
-              <button>Create Result</button>
+              <button name="resultToggle" onClick={this.handleClick}>Create Result</button>
             </td>
+
           </tr>
         </tbody>
       </table>
+      {this.state.resultToggle &&
+      <CreateResult/>
+      }
       </div>
     )
   }

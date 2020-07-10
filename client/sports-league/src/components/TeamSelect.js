@@ -120,9 +120,9 @@ class TeamSelect extends React.Component {
           {teamComponent}
         </select>
         <label style={paddingStyle}>Date: </label>
-        <input name="date" type="date" onChange={this.handleChange}/>
+        <input required name="date" type="date" onChange={this.handleChange}/>
         <label style={paddingStyle}>Time: </label>
-        <input name="time" type="time" onChange={this.handleChange}/>
+        <input required name="time" type="time" onChange={this.handleChange}/>
         <button style={{marginLeft: 20}} onClick={this.handleSave}>Save</button>
         </td>
       </tr>

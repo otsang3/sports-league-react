@@ -1,7 +1,7 @@
 import React from 'react';
 import ApiDataRequest from '../helpers/ApiDataRequest.js';
 import AdminFixture from '../components/AdminFixture.js';
-import CreateFixture from '../components/CreateFixture.js';
+import TeamSelect from '../components/TeamSelect.js';
 
 class AdminFixtureContainer extends React.Component {
 
@@ -48,7 +48,7 @@ class AdminFixtureContainer extends React.Component {
       <div style={{paddingLeft: 300, paddingTop: 30}}>
         <button onClick={() => this.handleClick()}>{buttonDisplay}</button>
         {this.state.fixtureToggle &&
-        <CreateFixture/>
+        <TeamSelect/>
         }
         {fixtureComponent}
       </div>
