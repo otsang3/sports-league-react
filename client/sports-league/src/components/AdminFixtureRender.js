@@ -63,7 +63,7 @@ class AdminFixtureRender extends React.Component {
         </tbody>
       </table>
       {this.state.resultToggle &&
-      <CreateResult/>
+      <CreateResult match={this.props.match}/>
       }
       </div>
     )
