@@ -15,32 +15,10 @@ public class Match {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonIgnoreProperties(value = {
-            "matchesPlayed",
-            "points",
-            "wins",
-            "draws",
-            "losses",
-            "goalsFor",
-            "goalsAgainst",
-            "goalDifference"
-
-    })
     @OneToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Club homeClub;
 
-    @JsonIgnoreProperties(value = {
-            "matchesPlayed",
-            "points",
-            "wins",
-            "draws",
-            "losses",
-            "goalsFor",
-            "goalsAgainst",
-            "goalDifference"
-
-    })
     @OneToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Club awayClub;
@@ -132,5 +110,9 @@ public class Match {
         }
         match.homeClub.addGoals(homeScore);
         match.awayClub.addGoals(awayScore);
+        match.homeClub.concedeGoals(awayScore);
+        match.awayClub.concedeGoals(homeScore);
+        match.homeClub.calculateGoalDiff();
+        match.awayClub.calculateGoalDiff();
     }
 }

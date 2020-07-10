@@ -1,7 +1,9 @@
 package com.example.sportsleague.controllers;
 
 import com.example.sportsleague.models.Match;
+import com.example.sportsleague.repositories.ClubRepository;
 import com.example.sportsleague.repositories.MatchRepository;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,9 @@ public class MatchController {
 
     @Autowired
     MatchRepository matchRepository;
+
+    @Autowired
+    ClubRepository clubRepository;
 
     @GetMapping
     public ResponseEntity<List<Match>> getAllMatches() {
@@ -34,7 +39,11 @@ public class MatchController {
     @PostMapping(value = "/createResult/{homeScore}/{awayScore}")
     public ResponseEntity createResult
             (@RequestBody Match match, @PathVariable("homeScore") int homeScore, @PathVariable("awayScore") int awayScore) {
+
         Match.createResult(match, homeScore, awayScore);
+        Gson homeClub = new Gson();
+        clubRepository.save(match.getHomeClub());
+        clubRepository.save(match.getAwayClub());
         return new ResponseEntity<>(matchRepository.save(match), HttpStatus.OK);
     }
 

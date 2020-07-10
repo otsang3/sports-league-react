@@ -26,11 +26,27 @@ class CreateResult extends React.Component {
       id: this.props.match.id,
       homeClub: {
         id: this.props.match.homeClub.id,
-        name: this.props.match.homeClub.name
+        name: this.props.match.homeClub.name,
+        matchesPlayed: this.props.match.homeClub.matchedPlayed,
+        points: this.props.match.homeClub.points,
+        wins: this.props.match.homeClub.wins,
+        draws: this.props.match.homeClub.draws,
+        losses: this.props.match.homeClub.losses,
+        goalsFor: this.props.match.homeClub.goalsFor,
+        goalsAgainst: this.props.match.homeClub.goalsAgainst,
+        goalDifference: this.props.match.homeClub.goalDifference
       },
       awayClub: {
         id: this.props.match.awayClub.id,
-        name: this.props.match.awayClub.name
+        name: this.props.match.awayClub.name,
+        matchesPlayed: this.props.match.homeClub.matchedPlayed,
+        points: this.props.match.awayClub.points,
+        wins: this.props.match.awayClub.wins,
+        draws: this.props.match.awayClub.draws,
+        losses: this.props.match.awayClub.losses,
+        goalsFor: this.props.match.awayClub.goalsFor,
+        goalsAgainst: this.props.match.awayClub.goalsAgainst,
+        goalDifference: this.props.match.awayClub.goalDifference
       },
       date: this.props.match.date
     }
@@ -44,6 +60,7 @@ class CreateResult extends React.Component {
         <label style={{marginLeft: 110}}>Home Score: </label>
         <input
         required
+        min="0"
         name="homeScore"
         type="number"
         value={this.state.homeScore}
@@ -52,6 +69,7 @@ class CreateResult extends React.Component {
         <label style={{marginLeft: 100}}>Away Score: </label>
         <input
         required
+        min="0"
         name="awayScore"
         type="number"
         value={this.state.awayScore}

@@ -156,4 +156,8 @@ public class Club {
     public void addGoals(int goals) {
         this.goalsFor += goals;
     }
+
+    public void concedeGoals(int goals) {
+        this.goalsAgainst += goals;
+    }
 }
