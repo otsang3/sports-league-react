@@ -40,23 +40,25 @@ class CreateResult extends React.Component {
 
   render() {
     return(
-      <form onSubmit={(event) => this.handleSubmit(event)}>
-        <label>Home Score: </label>
+      <form style={{marginTop:10}} onSubmit={(event) => this.handleSubmit(event)}>
+        <label style={{marginLeft: 110}}>Home Score: </label>
         <input
         required
         name="homeScore"
         type="number"
         value={this.state.homeScore}
-        onChange={(event) => this.handleChange(event)}/>
-        <label>Away Score: </label>
+        onChange={(event) => this.handleChange(event)}
+        style={{width:50}}/>
+        <label style={{marginLeft: 100}}>Away Score: </label>
         <input
         required
         name="awayScore"
         type="number"
         value={this.state.awayScore}
-        onChange={(event) => this.handleChange(event)}/>
+        onChange={(event) => this.handleChange(event)}
+        style={{width:50}}/>
 
-        <input  type="submit" value="Submit result"/>
+        <input style={{marginLeft:57}} type="submit" value="Submit result"/>
       </form>
     )
   }

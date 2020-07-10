@@ -36,6 +36,16 @@ class AdminFixtureRender extends React.Component {
       buttonDisplay = 'Cancel'
     }
 
+    let buttonDisplay2 = '';
+
+    if (!this.state.resultToggle) {
+      buttonDisplay2 = 'Create Result'
+    } else {
+      buttonDisplay2 = 'Cancel'
+    }
+
+
+
     return (
       <div key={this.props.match.id}>
       <table className="fixtures-table-content">
@@ -55,8 +65,10 @@ class AdminFixtureRender extends React.Component {
             }
             <td>
               <button name="editToggle" onClick={this.handleClick}>{buttonDisplay}</button>
+              {!this.state.editToggle &&
               <button onClick={() => this.handleDelete(this.props.match.id)}>Delete</button>
-              <button name="resultToggle" onClick={this.handleClick}>Create Result</button>
+              }
+              <button name="resultToggle" onClick={this.handleClick}>{buttonDisplay2}</button>
             </td>
 
           </tr>

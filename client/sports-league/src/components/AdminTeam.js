@@ -64,7 +64,7 @@ class AdminTeam extends React.Component {
         <button onClick={() => this.handleSave()}>Save</button>
         }
         {!this.state.editToggle &&
-        <label>{this.props.club.name}</label>
+        <label style={{marginLeft: 10}}>{this.props.club.name}</label>
         }
         {this.state.editToggle &&
         <input

@@ -58,16 +58,17 @@ class AdminTeamContainer extends React.Component {
 
     return(
       <div style={{paddingLeft: 550, paddingTop: 30}}>
-        <button onClick={this.handleClick}>Create a new Team</button>
+        <button style={{marginBottom: 30}} onClick={this.handleClick}>Create a new Team</button>
         {this.state.createToggle &&
-        <form onSubmit={this.handleSubmit}>
+        <form style={{ marginBottom: 30}} onSubmit={this.handleSubmit}>
+          <label>Team name: </label>
           <input
             name="formInput"
             onChange={this.handleChange}
             type="text"
             value={this.state.formInput}
           />
-          <input type="submit" value="Save team"/>
+          <input style={{marginLeft: 10}} type="submit" value="Save team"/>
         </form>
         }
         {adminTeamComponent}

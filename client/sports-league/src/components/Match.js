@@ -12,7 +12,7 @@ function Match(props) {
           <tr key={index}>
             <th>{getTime}</th>
             <th className="fixtures-table-item">{match.homeClub.name}</th>
-            {!typeof match.result === 'number' &&
+            {typeof match.result === 'object' &&
               <th style={{paddingLeft: 40}}>vs</th>
             }
             {typeof match.result === 'number' &&
