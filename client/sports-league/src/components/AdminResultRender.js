@@ -19,9 +19,13 @@ class AdminResultRender extends React.Component{
     this.setState({
       [event.target.name]: parseInt(event.target.value)
     })
-
   }
 
+  handleDelete(id) {
+    const request = new Request();
+
+    request.delete("/matches/results/" + id)
+  }
   handleEdit() {
     this.setState(prevState => ({
       editToggle: !prevState.editToggle

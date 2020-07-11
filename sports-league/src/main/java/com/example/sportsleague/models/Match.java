@@ -92,6 +92,45 @@ public class Match {
         this.awayScore = awayScore;
     }
 
+    public static void removeResult(Match prevMatch, Match newMatch) {
+        newMatch.getHomeClub().removeGoalsConceded(prevMatch.getAwayScore());
+        newMatch.getHomeClub().removeGoalsFor(prevMatch.getHomeScore());
+        newMatch.getAwayClub().removeGoalsConceded(prevMatch.getHomeScore());
+        newMatch.getAwayClub().removeGoalsFor(prevMatch.getAwayScore());
+
+        if (prevMatch.getHomeScore() > prevMatch.getAwayScore()) {
+            newMatch.getHomeClub().removeResult("win");
+            newMatch.getAwayClub().removeResult("loss");
+        } else if (prevMatch.getHomeScore() < prevMatch.getAwayScore()) {
+            newMatch.getHomeClub().removeResult("loss");
+            newMatch.getAwayClub().removeResult("win");
+        } else {
+            newMatch.getHomeClub().removeResult("draw");
+            newMatch.getAwayClub().removeResult("draw");
+        }
+        newMatch.homeClub.calculateGoalDiff();
+        newMatch.awayClub.calculateGoalDiff();
+    }
+
+    public static void deleteResult(Match match) {
+        match.getHomeClub().removeGoalsConceded(match.getAwayScore());
+        match.getHomeClub().removeGoalsFor(match.getHomeScore());
+        match.getAwayClub().removeGoalsConceded(match.getHomeScore());
+        match.getAwayClub().removeGoalsFor(match.getAwayScore());
+
+        if (match.getHomeScore() > match.getAwayScore()) {
+            match.getHomeClub().removeResult("win");
+            match.getAwayClub().removeResult("loss");
+        } else if (match.getHomeScore() < match.getAwayScore()) {
+            match.getHomeClub().removeResult("loss");
+            match.getAwayClub().removeResult("win");
+        } else { match.getHomeClub().removeResult("draw");
+            match.getAwayClub().removeResult("draw");
+        }
+        match.homeClub.calculateGoalDiff();
+        match.awayClub.calculateGoalDiff();
+    }
+
     public static void createResult(Match match, int homeScore, int awayScore) {
         match.setHomeScore(homeScore);
         match.setAwayScore(awayScore);

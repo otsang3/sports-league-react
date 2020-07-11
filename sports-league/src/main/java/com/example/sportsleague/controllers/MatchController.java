@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/matches")
@@ -41,7 +42,6 @@ public class MatchController {
             (@RequestBody Match match, @PathVariable("homeScore") int homeScore, @PathVariable("awayScore") int awayScore) {
 
         Match.createResult(match, homeScore, awayScore);
-        Gson homeClub = new Gson();
         clubRepository.save(match.getHomeClub());
         clubRepository.save(match.getAwayClub());
         return new ResponseEntity<>(matchRepository.save(match), HttpStatus.OK);
@@ -52,10 +52,37 @@ public class MatchController {
         return new ResponseEntity<>(matchRepository.save(match), HttpStatus.OK);
     }
 
+    @PatchMapping(value = "/results")
+    public ResponseEntity updateResult(@RequestBody Match match) {
+
+        Match prevResult = matchRepository.findById(match.getId()).orElse(null);
+
+        Match.removeResult(prevResult, match);
+        Match.createResult(match, match.getHomeScore(), match.getAwayScore());
+
+        clubRepository.save(match.getHomeClub());
+        clubRepository.save(match.getAwayClub());
+        return new ResponseEntity<>(matchRepository.save(match), HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/results/{id}")
+    public ResponseEntity<Match> deleteResult(@PathVariable Long id) {
+        Match match = matchRepository.findById(id).orElse(null);
+        Match.deleteResult(match);
+        matchRepository.save(match);
+        clubRepository.save(match.getHomeClub());
+        clubRepository.save(match.getAwayClub());
+        Match foundMatch = matchRepository.getOne(id);
+        matchRepository.delete(foundMatch);
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
+
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Match> deleteMatch(@PathVariable Long id) {
         Match foundMatch = matchRepository.getOne(id);
         matchRepository.delete(foundMatch);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
+
+
 }

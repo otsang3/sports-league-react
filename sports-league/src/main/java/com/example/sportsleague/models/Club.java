@@ -157,7 +157,32 @@ public class Club {
         this.goalsFor += goals;
     }
 
+    public void removeGoalsFor(int goals) {
+        this.goalsFor -= goals;
+    }
+
     public void concedeGoals(int goals) {
         this.goalsAgainst += goals;
+    }
+
+    public void removeGoalsConceded(int goals) {
+        this.goalsAgainst -= goals;
+    }
+
+    public void removeResult(String result) {
+        if (result == "win") {
+            this.wins -= 1;
+        } else if (result == "loss") {
+            this.losses -= 1;
+        } else {
+            this.draws -= 1;
+        }
+
+        this.matchesPlayed -= 1;
+    }
+
+    public void removeWin() {
+        this.wins -=1;
+        this.matchesPlayed -=1;
     }
 }
